@@ -10,6 +10,7 @@ import LobbyPageWrapper from './LobbyPageWrapper'
 import GamePageWrapper from './GamePageWrapper'
 import AddPixelWrapper from './AddPixelWrapper'
 import SinglePixelWrapper from './SinglePixelWrapper'
+import DeletedPageWrapper from './DeletedPageWrapper'
 
 // const HomePage = ({ children }) => <div className='homepage-background'>
 //   <div className="signin-signup-panel">
@@ -25,5 +26,6 @@ export default <Route path="/home" component={({ children }) => children}>
   <Route path='/pixels/:uid' component={GamePageWrapper} />
   <Route path='/pixels/:uid/add' component={AddPixelWrapper} />
   <Route path='/pixel/:uid/:id' component={SinglePixelWrapper} />
+  <Route path='/deleted/:uid' component={DeletedPageWrapper} />
 
 </Route>

@@ -4,13 +4,12 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import {Provider} from 'react-redux'
 import createLogger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
-import { routerMiddleware, push } from 'react-router-redux'
 import {Grid, Row, Col, Clearfix} from 'react-bootstrap'
 import RaisedButton from 'material-ui/RaisedButton'
 import Clear from 'material-ui/svg-icons/content/clear'
 
 import reducer from '../reducers'
-import SinglePixel from './SinglePixel'
+import SuccessfullyDeleted from './SuccessfullyDeleted'
 
 export default class extends React.Component {
   componentDidMount() {
@@ -65,10 +64,10 @@ export default class extends React.Component {
     const {store} = this.state || {}
         , {children} = this.props
     if (!store) return null
-    console.log('SinglePixelPageeeeeeeeee', this.props.gameId)
+
     return <Provider store={store}>
       <Grid className="main-grid">
-        <SinglePixel fireRef={this.props.fireRef} pixelId={this.props.gameId} userId={this.props.boardId}/>
+        <SuccessfullyDeleted fireRef={this.props.fireRef} wrapperId={this.props.wrapperId}/>
       </Grid>
     </Provider>
   }

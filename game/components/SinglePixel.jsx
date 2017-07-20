@@ -8,19 +8,22 @@ class SinglePixel extends React.Component {
     super(props)
     this.props.loadSinglePixel(this.props.pixelId)
     this.state={
-      chosenPixel: this.props.pixels.get(parseInt(this.props.pixelId)-1)
+      chosenPixel: this.props.pixels.get(parseInt(this.props.pixelId)-1),
+      deletedSuccesfully: false
     }
+    this.removePixelCallback=this.removePixelCallback.bind(this)
+    this.onUpdatePixelSubmit=this.onUpdatePixelSubmit.bind(this)
   }
 
   componentDidMount() {
-    this.removePixelCallback = this.removePixelCallback.bind(this)
-    this.onUpdatePixelSubmit = this.onUpdatePixelSubmit.bind(this)
+    console.log('GETTING HERE AGAIN')
   }
 
   removePixelCallback(event) {
     const removeOnePixel = this.props.removeOnePixel
-    event.stopPropagation()
     removeOnePixel(this.props.pixelId)
+    this.setState({deletedSuccesfully: true})
+    browserHistory.push(`/deleted/${this.props.userId}`)
   }
 
   onUpdatePixelSubmit(event) {
@@ -40,7 +43,7 @@ class SinglePixel extends React.Component {
     (
 
       <div>
-        {console.log('PROPS IN SINGLE PIXEL', thatPixel)}
+        {console.log('PROPSSSSSS IN SINGLE PIXEL', thatPixel)}
 
         <h1>{thatPixel.pixelDay} Pixel</h1>
         <div id="wrapper" style={{backgroundColor: thatPixel.pixelColor, width: `${10}vh`, height: `${10}vh`}}><p className="text">{thatPixel.pixelColor}</p></div>
@@ -69,7 +72,9 @@ class SinglePixel extends React.Component {
         </div>
         <div className="row col-lg-12">
         <hr />
-        <button className="btn btn-default" name="deletePixel" onClick={this.removePixelCallback}>Delete Pixel</button>
+
+          <button className="btn btn-default" name="deletePixel" onClick={this.removePixelCallback}>Delete Pixel</button>
+
         </div>
       </div>
     ):null
@@ -77,8 +82,10 @@ class SinglePixel extends React.Component {
 }
 
 /* ---CONTAINERS--- */
-const mapStateToProps = ({pixel}) => ({
-  pixels: pixel.pixels
+const mapStateToProps = (state, ownProps) => ({
+  pixels: state.pixel.pixels,
+  userId: ownProps.userId,
+  pixelId: ownProps.pixelId
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -7,5 +7,5 @@ import SinglePixelPage from './components/SinglePixelPage'
 
 export default ({params: {uid, id}}) =>
     <div className='gamePage'>
-      <SinglePixelPage fireRef={db.ref('board').child(uid)} gameId={id}/>
+      <SinglePixelPage fireRef={db.ref('board').child(uid)} boardId={uid} gameId={id}/>
   </div>
