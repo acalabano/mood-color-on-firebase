@@ -13,7 +13,7 @@ const NavbarComp = ({ auth }) => {
           <div className="container">
           <ul className="nav navbar-nav">
             <li><Link to="/">HOME</Link></li>
-            <li><Link to="/lobby/1">PIXELS</Link></li>
+            <li><Link to="/lobby">PIXELS</Link></li>
             <li><a href="/mirror.html">MIRROR</a></li>
           </ul>
           </div>

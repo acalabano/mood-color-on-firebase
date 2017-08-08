@@ -22,7 +22,7 @@ import DeletedPageWrapper from './DeletedPageWrapper'
 export default <Route path="/home" component={({ children }) => children}>
   <IndexRoute component={WelcomePage} />
   <Route path='/home' component={WelcomePage} />
-  <Route path='/lobby/:id' component={LobbyPageWrapper} />
+  <Route path='/lobby' component={LobbyPageWrapper} />
   <Route path='/pixels/:uid' component={GamePageWrapper} />
   <Route path='/pixels/:uid/add' component={AddPixelWrapper} />
   <Route path='/pixel/:uid/:id' component={SinglePixelWrapper} />
